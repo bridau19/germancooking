@@ -117,40 +117,46 @@ let jsonDatabase = [
 
 ]
 
+//go through each part in JSON database
 for (var i = 0; i < jsonDatabase.length; i++) {
   createRecipeBox(jsonDatabase[i]);
 }
 
 function createRecipeBox(incomingJSON) {
 
-  /// Create whole content item div and set class
+  // Create item and add class
   let newContentElement = document.createElement("DIV");
   newContentElement.style.border = "2px solid" + incomingJSON['this_color'];
   newContentElement.style.color = incomingJSON['this_color'];
+  // add class contentItem
   newContentElement.classList.add('contentItem');
 
-  /// Create HEADLINE h3, set class, set content
+  // Create dish name H3
   let newContentHeading = document.createElement("H3");
   newContentHeading.innerHTML = incomingJSON['title'];
   newContentHeading.classList.add('contentTitle');
-  /// Add the HEADLINE to the item
+  // Add the dish name to item
   newContentElement.appendChild(newContentHeading);
 
-  /// Create & add SUBTITLE to the item
+  // Create subtitle H4 for dishname
   let newContentSubhead = document.createElement("H4");
   newContentSubhead.innerHTML = incomingJSON['subtitle'];
+  // add to item
   newContentElement.appendChild(newContentSubhead);
 
-  /// Create & add DESCRIPTION to the item
+  // create description P for dish description
   let newContentDescription = document.createElement("P");
   newContentDescription.innerHTML = incomingJSON['description']
+  // add to item
   newContentElement.appendChild(newContentDescription);
 
-  /// Create & add image
+  // Create IMG
   let newImage = document.createElement("IMG");
   newImage.classList.add("footerImage");
   newImage.src = incomingJSON['my_image'];
+  // add to item
   newContentElement.appendChild(newImage);
-  /// Add the item to the page
+
+  //add entire new item to CSS grid (contentGrid DIV)
   contentGridElement.appendChild(newContentElement);
 }
